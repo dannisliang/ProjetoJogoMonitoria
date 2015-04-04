@@ -8,13 +8,12 @@ public class Correr : MonoBehaviour {
 	public bool estaCorrendo;
 
 	void Start(){
-		velocidadeAndando = GetComponentInChildren<Andar> ().velocidade;
+		velocidadeAndando = GetComponent<Andar> ().velocidade;
 	}
-
 
 	void Update(){
 
-		if(GetComponentInChildren<ChecarColisao>().estaNoChao){
+		if(GetComponentInChildren<ChecarColisaoPe>().estaNoChao){
 			if (Input.GetKey(KeyCode.LeftShift)) {
 				estaCorrendo = true;
 			}
@@ -24,10 +23,10 @@ public class Correr : MonoBehaviour {
 		}
 
 		if(estaCorrendo){
-			GetComponentInChildren<Andar>().velocidade = velocidadeCorrendo;
+			GetComponent<Andar>().velocidade = velocidadeCorrendo;
 		}
 		else{
-			GetComponentInChildren<Andar>().velocidade = velocidadeAndando;
+			GetComponent<Andar>().velocidade = velocidadeAndando;
 		}
 
 	}

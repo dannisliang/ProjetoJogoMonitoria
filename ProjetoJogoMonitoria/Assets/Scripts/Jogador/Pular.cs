@@ -9,17 +9,24 @@ public class Pular : MonoBehaviour {
 	public float forçaMin;
 	public float forçaMax;
 	public float multiplicador;
+	public int pulosNoAr;
+	public int pulosNoArMax;
 
 
 
 	void Update () {
+
+		if (GetComponentInChildren<ChecarColisaoPe>().estaNoChao) {
+			pulosNoAr = 0;
+		}
+
+
 		if(Input.GetKeyDown(KeyCode.Space)){
 			apertouPular = true;
 		}
 
 		if (apertouPular) {
 			tempoCarga += Time.deltaTime*multiplicador;
-
 			if (força < forçaMax) {
 				força += tempoCarga;
 				if(força < forçaMin){
@@ -30,22 +37,23 @@ public class Pular : MonoBehaviour {
 			}
 		}
 
-
-
-
 		if ((Input.GetKeyUp (KeyCode.Space) && apertouPular) || força == forçaMax) {
 			apertouPular = false;
 			iniciouPulo = true;
 		}
+
 	}
 
 	void FixedUpdate(){
 		if (iniciouPulo) {
-			if(GetComponentInChildren<ChecarColisao>().estaNoChao){
+			if(GetComponentInChildren<ChecarColisaoPe>().estaNoChao){
 				GetComponent<Rigidbody2D>().velocity = new Vector2(0,força);
 			}
 			else{
-				GetComponent<Rigidbody2D>().velocity = new Vector2(0,forçaMax);
+				if(pulosNoAr < pulosNoArMax){
+					GetComponent<Rigidbody2D>().velocity = new Vector2(0,forçaMax);
+					pulosNoAr++;
+				}
 			}
 			força = forçaMin;
 			iniciouPulo = false;
