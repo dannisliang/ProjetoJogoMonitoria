@@ -6,13 +6,8 @@ public class Andar : MonoBehaviour {
 	public float h;
 	public float velocidade;
 
-	private bool colidindo;
 
-	void Start () {
-	
-	}
-
-	void Update () {
+	void FixedUpdate () {
 		h = Input.GetAxis ("Horizontal");
 		h = h * Time.deltaTime;
 		transform.Translate (h * velocidade, 0, 0);
