@@ -4,9 +4,8 @@ using System.Collections;
 public class MorteInstantanea : MonoBehaviour {
 
 	void OnTriggerStay2D(Collider2D other){
-		if (other.name == "ColisaoCorpo") {
-			GameObject.Find("Jogador").GetComponent<Coraçoes>().coraçoes = 0;
-			GameObject.Find("Jogador").GetComponent<Controlador>().Paralizar();
+		if (other.name == "ColisorCorpo") {
+			other.GetComponentInParent<SofrerDano>().aplicarDano(other.transform.parent.GetComponent<Coraçoes>().coraçoes);
 		}
 	}
 }

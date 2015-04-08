@@ -12,7 +12,8 @@ public class Morrer : MonoBehaviour {
 			estaMorto = true;
 			if (tempoParaRecomeçar >= tempoParaRecomeçarMax) {
 				tempoParaRecomeçar = 0;
-				Application.LoadLevel (Application.loadedLevel);
+				//Application.LoadLevel (Application.loadedLevel);
+				GetComponent<Renascer>().Restaurar();
 			}
 		}
 	}

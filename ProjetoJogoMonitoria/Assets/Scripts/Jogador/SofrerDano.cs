@@ -6,7 +6,6 @@ public class SofrerDano : MonoBehaviour {
 	public bool estaInvulneravel;
 	public float tempoInvulnerabilidade;
 	public float tempoInvulnerabilidadeMax;
-	public float forçaEmpurrao;
 	public float intervaloPiscar;
 	public float intervaloPiscarMax;
 
@@ -34,7 +33,7 @@ public class SofrerDano : MonoBehaviour {
 		}
 	}
 
-	public void aplicarDano( int dano, float inimigoPosX){
+	public void aplicarDano( int dano, float forçaEmpurrao, float inimigoPosX){
 		estaInvulneravel = true;
 		GetComponent<Coraçoes> ().coraçoes -= dano;
 		if (inimigoPosX < transform.position.x) {
@@ -42,6 +41,12 @@ public class SofrerDano : MonoBehaviour {
 		} else {
 			GetComponent<Rigidbody2D> ().velocity = new Vector2 (-1 * forçaEmpurrao, 0);
 		}
+		GetComponent<Controlador> ().Paralizar ();
+	}
+
+	public void aplicarDano(int dano){
+		estaInvulneravel = true;
+		GetComponent<Coraçoes> ().coraçoes -= dano;
 		GetComponent<Controlador> ().Paralizar ();
 	}
 
