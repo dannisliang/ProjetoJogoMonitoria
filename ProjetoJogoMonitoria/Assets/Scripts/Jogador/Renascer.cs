@@ -3,16 +3,17 @@ using System.Collections;
 
 public class Renascer : MonoBehaviour {
 
-	public Vector2 posiçao;
+	public Vector2 posicao;
 
 	void Start(){
-		posiçao = transform.position;
+		posicao = transform.position;
 	}
 
 	public void Restaurar(){
-		transform.position = posiçao;
-		GetComponent<Coraçoes> ().coraçoes = GetComponent<Coraçoes> ().coraçoesMax;
+		transform.position = posicao;
+		GetComponent<Coracoes> ().coracoes = GetComponent<Coracoes> ().coracoesMax;
 		GetComponent<Morrer> ().estaMorto = false;
 		GetComponent<Controlador> ().Desparalizar ();
+		GetComponent<Rigidbody2D> ().velocity = Vector2.zero;
 	}
 }

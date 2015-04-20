@@ -2,14 +2,14 @@
 using System.Collections;
 
 public class Checkpoint : MonoBehaviour {
-	public Vector2 posiçao;
+	public Vector2 posicao;
 
 	void OnTriggerEnter2D(Collider2D outro){
 		if (outro.name == "ColisorCorpo") {
-			posiçao = outro.transform.parent.position;
+			posicao = transform.position;
 			Desativar();
 			Ativar ();
-			outro.transform.parent.GetComponent<Renascer>().posiçao = posiçao;
+			outro.transform.parent.GetComponent<Renascer>().posicao = posicao;
 		}
 	
 	}

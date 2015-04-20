@@ -13,6 +13,7 @@ public class Controlador : MonoBehaviour {
 	}
 
 	public void Paralizar(){
+		GetComponent<Pular> ().FinalizarPulo ();
 		podeAndar = false;
 		podeCorrer = false;
 		podePular = false;

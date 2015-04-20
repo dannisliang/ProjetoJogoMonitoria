@@ -3,15 +3,16 @@ using System.Collections;
 
 public class Morrer : MonoBehaviour {
 	public bool estaMorto;
-	public float tempoParaRecomeçar;
-	public float tempoParaRecomeçarMax;
+	public float tempoParaRecomecar;
+	public float tempoParaRecomecarMax;
 
 	void Update () {
-		if (GetComponent<Coraçoes> ().coraçoes <= 0) {
-			tempoParaRecomeçar += Time.deltaTime;
+		if (GetComponent<Coracoes> ().coracoes <= 0) {
+			tempoParaRecomecar += Time.deltaTime;
+			GetComponent<Controlador>().Paralizar();
 			estaMorto = true;
-			if (tempoParaRecomeçar >= tempoParaRecomeçarMax) {
-				tempoParaRecomeçar = 0;
+			if (tempoParaRecomecar >= tempoParaRecomecarMax) {
+				tempoParaRecomecar = 0;
 				//Application.LoadLevel (Application.loadedLevel);
 				GetComponent<Renascer>().Restaurar();
 			}

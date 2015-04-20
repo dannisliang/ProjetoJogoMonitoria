@@ -8,22 +8,23 @@ public class SofrerDano : MonoBehaviour {
 	public float tempoInvulnerabilidadeMax;
 	public float intervaloPiscar;
 	public float intervaloPiscarMax;
+	public bool piscar;
 
 	void Update () {
 		if (estaInvulneravel) {
-			intervaloPiscar += Time.deltaTime;
-			if(intervaloPiscar >= intervaloPiscarMax){
-				intervaloPiscar = 0;
-				if(GetComponent<SpriteRenderer>().enabled == true){
-					GetComponent<SpriteRenderer>().enabled = false;
-				}
-				else{
-					GetComponent<SpriteRenderer>().enabled = true;
+			tempoInvulnerabilidade += Time.deltaTime;
+			if(piscar){
+				intervaloPiscar += Time.deltaTime;
+				if(intervaloPiscar >= intervaloPiscarMax){
+					intervaloPiscar = 0;
+					if(GetComponent<SpriteRenderer>().enabled == true){
+						GetComponent<SpriteRenderer>().enabled = false;
+					}
+					else{
+						GetComponent<SpriteRenderer>().enabled = true;
+					}
 				}
 			}
-
-			tempoInvulnerabilidade += Time.deltaTime;
-
 		}
 		if (tempoInvulnerabilidade >= tempoInvulnerabilidadeMax) {
 			estaInvulneravel = false;
@@ -33,20 +34,20 @@ public class SofrerDano : MonoBehaviour {
 		}
 	}
 
-	public void aplicarDano( int dano, float forçaEmpurrao, float inimigoPosX){
+	public void aplicarDano( int dano, float forcaEmpurrao, float inimigoPosX){
 		estaInvulneravel = true;
-		GetComponent<Coraçoes> ().coraçoes -= dano;
+		GetComponent<Coracoes> ().coracoes -= dano;
 		if (inimigoPosX < transform.position.x) {
-			GetComponent<Rigidbody2D> ().velocity = new Vector2 (forçaEmpurrao, 0);
+			GetComponent<Rigidbody2D> ().velocity = new Vector2 (forcaEmpurrao, 0);
 		} else {
-			GetComponent<Rigidbody2D> ().velocity = new Vector2 (-1 * forçaEmpurrao, 0);
+			GetComponent<Rigidbody2D> ().velocity = new Vector2 (-1 * forcaEmpurrao, 0);
 		}
 		GetComponent<Controlador> ().Paralizar ();
 	}
 
 	public void aplicarDano(int dano){
 		estaInvulneravel = true;
-		GetComponent<Coraçoes> ().coraçoes -= dano;
+		GetComponent<Coracoes> ().coracoes -= dano;
 		GetComponent<Controlador> ().Paralizar ();
 	}
 

@@ -5,12 +5,13 @@ public class Andar : MonoBehaviour {
 
 	public float h;
 	public float velocidade;
+	public bool direita;
+	public bool esquerda;
 
 
 	void FixedUpdate () {
 		h = Input.GetAxis ("Horizontal");
-		h = h * Time.deltaTime;
-		transform.Translate (h * velocidade, 0, 0);
-		//GetComponent<Rigidbody2D> ().velocity = new Vector2 (h * velocidade, GetComponent<Rigidbody2D> ().velocity.y);
+		transform.Translate (h * velocidade*Time.deltaTime, 0, 0);
+
 	}
 }		
