@@ -9,7 +9,7 @@ public class Andar : MonoBehaviour {
 	public bool esquerda;
 
 
-	void FixedUpdate () {
+	void Update () {
 		h = Input.GetAxis ("Horizontal");
 		transform.Translate (h * velocidade*Time.deltaTime, 0, 0);
 

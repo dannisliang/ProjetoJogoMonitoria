@@ -3,14 +3,15 @@ using System.Collections;
 
 public class CameraSeguirJogador : MonoBehaviour {
 	public Transform jogadorAlvo;
-	public float zoom = 3.0f;
-	public float altura = 3.0f;
-	public float deslocamento = 0.0f;
-	public float velocidade = 5.0f;
+	public float zoom;
+	public float altura;
+	public float deslocamento;
+	public float velocidade;
 
 	
-	void FixedUpdate () {
+	void Update () {
 		jogadorAlvo = GameObject.Find ("Jogador/Corpo").transform;
+		GetComponent<Camera> ().orthographicSize = zoom;
 		Vector3 posicaoFinal = jogadorAlvo.TransformPoint(deslocamento, altura, -zoom);
 		if (!jogadorAlvo.GetComponent<Morrer> ().estaMorto) {
 			transform.position = Vector3.Lerp (transform.position, posicaoFinal, Time.deltaTime * velocidade);

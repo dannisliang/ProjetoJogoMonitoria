@@ -13,7 +13,7 @@ public class Correr : MonoBehaviour {
 
 	void Update(){
 
-		if(GetComponentInChildren<ChecarColisaoPe>().estaNoChao){
+		if(GetComponentInChildren<ChecarColisao>().estaNoChao){
 			if (Input.GetKey(KeyCode.LeftShift)) {
 				estaCorrendo = true;
 			}

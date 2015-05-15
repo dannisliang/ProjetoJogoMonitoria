@@ -21,7 +21,7 @@ public class Pular : MonoBehaviour {
 			FinalizarPulo();
 		}
 
-		if (GetComponent<ChecarColisaoPe> ().estaNoChao) {
+		if (GetComponent<ChecarColisao> ().estaNoChao) {
 			pulosNoAr = 0;
 			caindo = false;
 		} else {
@@ -31,7 +31,7 @@ public class Pular : MonoBehaviour {
 		}
 
 		if(Input.GetButtonDown("Jump")){
-			if (GetComponent<ChecarColisaoPe>().estaNoChao) {
+			if (GetComponent<ChecarColisao>().estaNoChao) {
 				estaPulando = true;
 				estaPulandoNoAr = false;
 			}

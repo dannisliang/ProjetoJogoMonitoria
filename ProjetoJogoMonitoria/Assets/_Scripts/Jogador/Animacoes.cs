@@ -18,10 +18,11 @@ public class Animacoes : MonoBehaviour {
 		h = GetComponent<Andar> ().h;
 		velocidade = GetComponent<Andar> ().velocidade;
 		GetComponent<Animator> ().SetBool ("Ferido", GetComponent<SofrerDano> ().estaInvulneravel);
-		GetComponent<Animator> ().SetBool ("EstaNoChao", GetComponent<ChecarColisaoPe> ().estaNoChao);
+		GetComponent<Animator> ().SetBool ("EstaNoChao", GetComponent<ChecarColisao> ().estaNoChao);
 		GetComponent<Animator> ().SetBool ("Pulando", GetComponent<Pular> ().estaPulando);
 		GetComponent<Animator> ().SetBool ("Caindo", GetComponent<Pular> ().caindo);
 		GetComponent<Animator> ().SetBool ("PulandoNoAr", GetComponent<Pular> ().estaPulandoNoAr);
+		GetComponent<Animator> ().SetFloat ("VelocidadeY", GetComponent<Rigidbody2D> ().velocity.y);
 		GameObject.Find ("Wings").transform.GetComponent<Animator>().SetBool("BaterAsa", GetComponent<Pular> ().estaPulandoNoAr);
 
 		if (h * velocidade != 0) {

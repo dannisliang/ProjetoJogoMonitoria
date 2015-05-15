@@ -16,7 +16,7 @@ public class Pular_Old : MonoBehaviour {
 
 	void Update () {
 
-		if (GetComponentInChildren<ChecarColisaoPe>().estaNoChao) {
+		if (GetComponentInChildren<ChecarColisao>().estaNoChao) {
 			pulosNoAr = 0;
 		}
 
@@ -46,7 +46,7 @@ public class Pular_Old : MonoBehaviour {
 
 	void FixedUpdate(){
 		if (iniciouPulo) {
-			if(GetComponentInChildren<ChecarColisaoPe>().estaNoChao){
+			if(GetComponentInChildren<ChecarColisao>().estaNoChao){
 				GetComponent<Rigidbody2D>().velocity = new Vector2(GetComponent<Rigidbody2D> ().velocity.x,forca);
 			}
 			else{
